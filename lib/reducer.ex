@@ -4,4 +4,12 @@ defmodule Reducer do
 
   def reduce([], acc, _), do: acc
   def reduce([h|t], acc, fun), do: reduce(t, fun.(acc, h), fun)
+
+  def all?(collection, fun \\ fn x -> x end) do
+    reduce(collection, true, fn(acc, x) -> acc && fun.(x) end)
+  end
+
+  def any?(collection, fun \\ fn x -> x end) do
+    reduce(collection, false, fn(acc, x) -> acc || fun.(x) end)
+  end
 end
