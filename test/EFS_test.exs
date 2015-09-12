@@ -24,11 +24,25 @@ defmodule EFSTest do
     refute EFS.all?([1, nil, 3])
   end
 
+  test "all_rec? is working" do
+    assert EFS.all_rec?([2, 4, 6], fn(x) -> rem(x, 2) == 0 end)
+    refute EFS.all_rec?([2, 3, 4], fn(x) -> rem(x, 2) == 0 end)
+    assert EFS.all_rec?([1, 2, 3])
+    refute EFS.all_rec?([1, nil, 3])
+  end
+
   test "any? is working" do
     refute EFS.any?([2, 4, 6], fn(x) -> rem(x, 2) == 1 end)
     assert EFS.any?([2, 3, 4], fn(x) -> rem(x, 2) == 1 end)
     refute EFS.any?([false, false, false])
     assert EFS.any?([false, true, false])
+  end
+
+  test "any_rec? is working" do
+    refute EFS.any_rec?([2, 4, 6], fn(x) -> rem(x, 2) == 1 end)
+    assert EFS.any_rec?([2, 3, 4], fn(x) -> rem(x, 2) == 1 end)
+    refute EFS.any_rec?([false, false, false])
+    assert EFS.any_rec?([false, true, false])
   end
 
   test "at is working" do
