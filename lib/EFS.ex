@@ -13,7 +13,8 @@ defmodule EFS do
     reduce(collection, false, fn(acc, x) -> acc || fun.(x) end)
   end
 
-  def at(collection, n, default \\ nil) do
-    nil
-  end
+  def at(collection, n, default \\ nil)
+  def at([h|t], 0, default), do: h
+  def at([], n, default), do: default
+  def at([h|t], n, default), do: at(t, n - 1, default)
 end
