@@ -14,7 +14,7 @@ defmodule EFS do
   end
 
   def at(collection, n, default \\ nil)
-  def at([h|t], 0, default), do: h
-  def at([], n, default), do: default
-  def at([h|t], n, default), do: at(t, n - 1, default)
+  def at([h|_], 0, _), do: h
+  def at([], _, default), do: default
+  def at([_|t], n, default), do: at(t, n - 1, default)
 end
