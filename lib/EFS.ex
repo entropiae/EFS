@@ -1,4 +1,4 @@
-defmodule Reducer do
+defmodule EFS do
   def reduce([], _), do: raise Enum.EmptyError
   def reduce([h|t], fun), do: reduce(t, h, fun)
 
@@ -11,5 +11,9 @@ defmodule Reducer do
 
   def any?(collection, fun \\ fn x -> x end) do
     reduce(collection, false, fn(acc, x) -> acc || fun.(x) end)
+  end
+
+  def at(collection, n, default \\ nil) do
+    nil
   end
 end

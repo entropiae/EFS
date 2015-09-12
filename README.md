@@ -1,4 +1,2 @@
-Reducer
+EFS (Elixir's Enum From Scratch)
 =======
-
-** TODO: Add description **
