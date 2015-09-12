@@ -33,7 +33,7 @@ defmodule EFSTest do
 
   test "at is working" do
     assert EFS.at([2, 4, 6], 0) == 2
-    assert EFS.at([2, 4, 6], 0) == 6
+    assert EFS.at([2, 4, 6], 2) == 6
     assert EFS.at([2, 4, 6], 4) == nil
     assert EFS.at([2, 4, 6], 4, :none) == :none
   end
